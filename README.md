@@ -68,3 +68,13 @@ python bot.py
 ## Demo
 
 Video demo available upon request.
+
+## Screenshots
+
+### Booking process
+
+![Booking](assets/demo1.jpg)
+
+### Admin notification
+
+![Admin](assets/demo2.jpg)
