@@ -11,6 +11,7 @@ from config import *
 from keyboards import (
     get_main_keyboard,
     get_service_keyboard,
+    get_date_keyboard,
     get_time_keyboard,
     get_cancel_keyboard
 )
@@ -22,6 +23,7 @@ dp = Dispatcher(storage=MemoryStorage())
 
 class Booking(StatesGroup):
     service = State()
+    date = State()
     time = State()
     name = State()
     phone = State()
@@ -53,9 +55,14 @@ async def cancel_handler(message: types.Message, state: FSMContext):
 @dp.message(Booking.service)
 async def choose_service(message: types.Message, state: FSMContext):
     await state.update_data(service=message.text)
+    await message.answer(CHOOSE_DATE_TEXT, reply_markup=get_date_keyboard())
+    await state.set_state(Booking.date)
+
+@dp.message(Booking.date)
+async def choose_date(message: types.Message, state: FSMContext):
+    await state.update_data(date=message.text)
     await message.answer(CHOOSE_TIME_TEXT, reply_markup=get_time_keyboard())
     await state.set_state(Booking.time)
-
 
 @dp.message(Booking.time)
 async def choose_time(message: types.Message, state: FSMContext):
@@ -91,13 +98,21 @@ async def get_phone(message: types.Message, state: FSMContext):
         f"""🔥 Новий запис!
 
 🛠 Послуга: {data['service']}
+📅 Дата: {data['date']}
 🕒 Час: {data['time']}
 👤 Ім'я: {data['name']}
 📞 Телефон: {data['phone']}
 """
     )
 
-    await message.answer(SUCCESS_TEXT, reply_markup=get_main_keyboard())
+    await message.answer(f"""✅ Ви успішно записались!
+
+🛠 Послуга: {data['service']}
+📅 Дата: {data['date']}
+🕒 Час: {data['time']}
+
+Дякуємо за запис!""",
+reply_markup=get_main_keyboard())
     await state.clear()
 
 
