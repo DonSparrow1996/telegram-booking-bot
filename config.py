@@ -1,7 +1,7 @@
 # ================== SETTINGS ==================
 
-TOKEN = "8386589399:AAEzutNUJ5iwLsnpGd_jXGg3eUjku89fDn8"
-ADMIN_ID = 523992221
+TOKEN = "your-token"
+ADMIN_ID = 123456789
 
 BUSINESS_NAME = "Beauty Studio"
 
