@@ -1,15 +1,20 @@
 # ================== SETTINGS ==================
 
-TOKEN = "ADD_YOUR_TOKEN_HERE"
-ADMIN_ID = 123456789
+TOKEN = "8386589399:AAEzutNUJ5iwLsnpGd_jXGg3eUjku89fDn8"
+ADMIN_ID = 523992221
 
 BUSINESS_NAME = "Beauty Studio"
 
 # ---- MESSAGES ----
 
-START_TEXT = "Вітаємо у {business}!\nТут ви можете записатися на послугу."
+START_TEXT = (
+    "✨ Вітаємо у {business}!\n\n"
+    "Онлайн-запис за 1 хвилину.\n"
+    "Оберіть дію нижче 👇"
+)
 
 CHOOSE_SERVICE_TEXT = "Оберіть послугу:"
+CHOOSE_DATE_TEXT = "Оберіть дату:"
 CHOOSE_TIME_TEXT = "Оберіть зручний час:"
 ENTER_NAME_TEXT = "Введіть ваше ім'я:"
 ENTER_PHONE_TEXT = "Введіть ваш телефон:"
@@ -30,6 +35,12 @@ SERVICES = [
     "💇 Стрижка",
     "💅 Манікюр",
     "💆 Массаж"
+]
+
+AVAILABLE_DATES = [
+    "Сьогодні",
+    "Завтра",
+    "Післязавтра"
 ]
 
 AVAILABLE_TIMES = [
